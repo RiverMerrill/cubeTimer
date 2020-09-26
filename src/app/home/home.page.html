@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+</ion-header>
+
+<ion-content (click)="screenTap()" [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div id="container">
+    <p>Tap screen to start timer...</p>
+    <div class="timer">
+      <h1>{{time.minutes | number: '2.'}}:{{time.seconds | number: '2.'}}:{{time.milliseconds | number: '2.'}}</h1>
+    </div>
+    <p>Average: {{average.minutes | number: '2.'}}:{{average.seconds | number: '2.'}}:{{average.milliseconds | number: '2.'}}</p>
+  </div>
+   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+     <ion-fab-button color="dark">
+       <ion-icon name="settings-outline"></ion-icon>
+     </ion-fab-button>
+   </ion-fab>
+</ion-content>

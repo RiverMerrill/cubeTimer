@@ -1,0 +1,7 @@
+{
+  "name": "cubeTimer",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
