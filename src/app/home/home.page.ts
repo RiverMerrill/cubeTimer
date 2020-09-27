@@ -3,6 +3,7 @@ import {TimeHistoryService} from '../services/time-history.service';
 import {SettingsService} from '../services/settings.service';
 import { Observable} from 'rxjs';
 import {Settings} from '../models/settings.model';
+import {Time} from '../models/time.model';
 
 @Component({
   selector: 'app-home',
@@ -10,18 +11,13 @@ import {Settings} from '../models/settings.model';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  public time: any = {
-    minutes: 0,
-    seconds: 0,
-    milliseconds: 0,
-    milliTotal: 0
-  };
+  public time: Time = new Time();
   public timer: any;
   public started: boolean = false;
-  public date: any;
-  public average: any;
+  public date: number;
+  public average: Time;
   public totalTimes: number;
-  public bestTime: any;
+  public bestTime: Time;
   public settings: Observable<Settings>;
 
   constructor(private timeHistory: TimeHistoryService, private settingsService: SettingsService) {
@@ -29,10 +25,10 @@ export class HomePage {
     timeHistory.average.subscribe((time) => {
       this.average = time;
     });
-    timeHistory.allTimes.subscribe((times: any) => {
+    timeHistory.allTimes.subscribe((times: Time[]) => {
       this.totalTimes = times ? times.length : 0;
     });
-    timeHistory.bestTime.subscribe((time: any) => {
+    timeHistory.bestTime.subscribe((time: Time) => {
       this.bestTime = time;
     });
     this.settings = this.settingsService.getSettings();
@@ -73,11 +69,6 @@ export class HomePage {
   }
 
   resetTimer() {
-    this.time = {
-      minutes: 0,
-      seconds: 0,
-      milliseconds: 0,
-      milliTotal: 0
-    }
+    this.time = new Time();
   }
 }

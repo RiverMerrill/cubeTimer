@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SettingsService} from '../services/settings.service';
 import {Settings} from '../models/settings.model';
+import {TimeHistoryService} from '../services/time-history.service';
 
 @Component({
   selector: 'app-settings',
@@ -10,9 +11,8 @@ import {Settings} from '../models/settings.model';
 export class SettingsComponent implements OnInit {
   public settings: Settings;
 
-  constructor(private settingsService: SettingsService) {
+  constructor(private settingsService: SettingsService, private timeHistory: TimeHistoryService) {
     this.settingsService.getSettings().subscribe((settings: Settings) => {
-      console.log(settings);
       this.settings = settings;
     });
   }
@@ -20,7 +20,11 @@ export class SettingsComponent implements OnInit {
   ngOnInit() {
   }
 	
-  changeSetting() {
+  changeSetting(): void {
     this.settingsService.changeSettings(this.settings);
+  }
+
+  resetTimes(): void {
+    this.timeHistory.clearAllTimes();
   }
 }

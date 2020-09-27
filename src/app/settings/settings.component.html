@@ -1,5 +1,6 @@
 <ion-list>
   <ion-list-header>
+		<a [routerLink]="'/home'">< Back</a>
     <ion-label class="text-center">
 			Settings
     </ion-label>
@@ -35,3 +36,8 @@
 			<ion-toggle [checked]="settings.showHelpText" (ionChange)="settings.showHelpText = $event.detail.checked; changeSetting()"></ion-toggle>
 		</ion-item>
 </ion-list>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="resetTimes()" color="danger">
+    <ion-icon name="remove"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
