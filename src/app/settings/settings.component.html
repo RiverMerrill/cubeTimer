@@ -1,3 +1,37 @@
-<p>
-  settings works!
-</p>
+<ion-list>
+  <ion-list-header>
+    <ion-label class="text-center">
+			Settings
+    </ion-label>
+  </ion-list-header>
+    <ion-item>
+      <ion-label>Theme</ion-label>
+      <ion-select (ionChange)="settings.theme = $event.detail.value; changeSetting()" [value]="settings.theme" okText="Okay" cancelText="Dismiss">
+        <ion-select-option selected value="default">Default</ion-select-option>
+        <ion-select-option value="blue-theme">Blue</ion-select-option>
+        <ion-select-option value="pink-theme">Pink</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Average Size</ion-label>
+      <ion-select (ionChange)="settings.average = $event.detail.value; changeSetting()" [value]="settings.average.toString()" okText="Okay" cancelText="Dismiss">
+        <ion-select-option value="">Don't Show</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+        <ion-select-option value="5">5</ion-select-option>
+        <ion-select-option value="10">10</ion-select-option>
+        <ion-select-option value="12">12</ion-select-option>
+      </ion-select>
+    </ion-item>
+		<ion-item>
+			<ion-label>Show Best</ion-label>
+			<ion-toggle [checked]="settings.showBest" (ionChange)="settings.showBest = $event.detail.checked; changeSetting()"></ion-toggle>
+		</ion-item>
+		<ion-item>
+			<ion-label>Show Total</ion-label>
+			<ion-toggle [checked]="settings.showTotal" (ionChange)="settings.showTotal = $event.detail.checked; changeSetting()"></ion-toggle>
+		</ion-item>
+		<ion-item>
+			<ion-label>Show Help Text</ion-label>
+			<ion-toggle [checked]="settings.showHelpText" (ionChange)="settings.showHelpText = $event.detail.checked; changeSetting()"></ion-toggle>
+		</ion-item>
+</ion-list>

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import {TimeHistoryService} from '../services/time-history.service';
+import {SettingsService} from '../services/settings.service';
+import { Observable} from 'rxjs';
+import {Settings} from '../models/settings.model';
 
 @Component({
   selector: 'app-home',
@@ -17,13 +20,23 @@ export class HomePage {
   public started: boolean = false;
   public date: any;
   public average: any;
+  public totalTimes: number;
+  public bestTime: any;
+  public settings: Observable<Settings>;
 
-  constructor(private timeHistory: TimeHistoryService) {
+  constructor(private timeHistory: TimeHistoryService, private settingsService: SettingsService) {
     timeHistory.getAverage();
     timeHistory.average.subscribe((time) => {
-      console.log(time);
       this.average = time;
     });
+    timeHistory.allTimes.subscribe((times: any) => {
+      this.totalTimes = times ? times.length : 0;
+    });
+    timeHistory.bestTime.subscribe((time: any) => {
+      this.bestTime = time;
+    });
+    this.settings = this.settingsService.getSettings();
+    console.log(this.settings);
   }
 
   screenTap() {

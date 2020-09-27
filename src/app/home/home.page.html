@@ -1,21 +1,22 @@
 <ion-header [translucent]="true">
 </ion-header>
-
-<ion-content (click)="screenTap()" [fullscreen]="true">
+<ion-content  [fullscreen]="true" [ngClass]="(settings | async).theme">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
-  <div id="container">
-    <p>Tap screen to start timer...</p>
+  <div (click)="screenTap()" id="container">
+    <p *ngIf="(settings | async).showHelpText">Tap timer to start...</p>
     <div class="timer">
       <h1>{{time.minutes | number: '2.'}}:{{time.seconds | number: '2.'}}:{{time.milliseconds | number: '2.'}}</h1>
     </div>
-    <p>Average: {{average.minutes | number: '2.'}}:{{average.seconds | number: '2.'}}:{{average.milliseconds | number: '2.'}}</p>
+    <p *ngIf="(settings | async).showBest">Best: {{ bestTime.minutes | number: '2.' }}:{{ bestTime.seconds | number: '2.' }}:{{ bestTime.milliseconds | number: '2.' }}</p>
+    <p *ngIf="(settings | async).average">Average Of {{ (settings | async).average }}: {{average.minutes | number: '2.'}}:{{average.seconds | number: '2.'}}:{{average.milliseconds | number: '2.'}}</p>
+    <p *ngIf="(settings | async).showTotal">Total Times: {{ totalTimes }}</p>
   </div>
    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-     <ion-fab-button color="dark">
+     <ion-fab-button [routerLink]="'/settings'" color="dark">
        <ion-icon name="settings-outline"></ion-icon>
      </ion-fab-button>
    </ion-fab>
