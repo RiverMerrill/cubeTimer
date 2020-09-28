@@ -17,15 +17,19 @@ export class TimeHistoryService {
     this.allTimes.next(this.storageService.getItem('time-history'));
     this.bestTime.next(this.getBest());
   }
+  
+  public getHistory(): void {
+    this.average.next(this.getAverage());
+    this.allTimes.next(this.storageService.getItem('time-history'));
+    this.bestTime.next(this.getBest());
+  }
 
   public addTime(time: Time): void {
     const history = this.storageService.getItem('time-history');
     const arrToSet = history || [];
     arrToSet.push(time);
     this.storageService.setItem('time-history', arrToSet);
-    this.average.next(this.getAverage());
-    this.allTimes.next(this.storageService.getItem('time-history'));
-    this.bestTime.next(this.getBest());
+    this.getHistory();
   }
 
   public getAllTimes(): Observable<any> { 
@@ -65,5 +69,6 @@ export class TimeHistoryService {
 
   public clearAllTimes(): void {
     this.storageService.setItem('time-history', []);
+    this.getHistory();
   }
 }

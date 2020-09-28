@@ -1,27 +1,41 @@
 .blue-theme {
-  --ion-background-color: #5FBFF9;
+--ion-background-color: #5FBFF9;
   --ion-background-color-rgb: 95,191,249;
 
-  --ion-text-color: #333333;
-  --ion-text-color-rgb: 51,51,51;
+  --ion-text-color: #ffffff;
+  --ion-text-color-rgb: 255,255,255;
 
-  --ion-color-step-50: #5db8ef;
-  --ion-color-step-100: #5bb1e5;
-  --ion-color-step-150: #58aadb;
-  --ion-color-step-200: #56a3d1;
-  --ion-color-step-250: #549cc8;
-  --ion-color-step-300: #5295be;
-  --ion-color-step-350: #508eb4;
-  --ion-color-step-400: #4d87aa;
-  --ion-color-step-450: #4b80a0;
-  --ion-color-step-500: #497996;
-  --ion-color-step-550: #47728c;
-  --ion-color-step-600: #456b82;
-  --ion-color-step-650: #426478;
-  --ion-color-step-700: #405d6e;
-  --ion-color-step-750: #3e5665;
-  --ion-color-step-800: #3c4f5b;
-  --ion-color-step-850: #3a4851;
-  --ion-color-step-900: #374147;
-  --ion-color-step-950: #353a3d;
+  --ion-color-step-50: #67c2f9;
+  --ion-color-step-100: #6fc5fa;
+  --ion-color-step-150: #77c9fa;
+  --ion-color-step-200: #7fccfa;
+  --ion-color-step-250: #87cffb;
+  --ion-color-step-300: #8fd2fb;
+  --ion-color-step-350: #97d5fb;
+  --ion-color-step-400: #9fd9fb;
+  --ion-color-step-450: #a7dcfc;
+  --ion-color-step-500: #afdffc;
+  --ion-color-step-550: #b7e2fc;
+  --ion-color-step-600: #bfe5fd;
+  --ion-color-step-650: #c7e9fd;
+  --ion-color-step-700: #cfecfd;
+  --ion-color-step-750: #d7effe;
+  --ion-color-step-800: #dff2fe;
+  --ion-color-step-850: #e7f5fe;
+  --ion-color-step-900: #eff9fe;
+  --ion-color-step-950: #f7fcff;
+
+  --ion-color-primary: #5e60ce;
+  --ion-color-primary-rgb: 94,96,206;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255,255,255;
+  --ion-color-primary-shade: #5354b5;
+  --ion-color-primary-tint: #6e70d3;
+
+  --ion-color-danger: #f07167;
+  --ion-color-danger-rgb: 240,113,103;
+  --ion-color-danger-contrast: #FFFFFF;
+  --ion-color-danger-contrast-rgb: 255,255,255;
+  --ion-color-danger-shade: #d3635b;
+  --ion-color-danger-tint: #f27f76;
 }

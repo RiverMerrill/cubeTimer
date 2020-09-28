@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {TimeHistoryService} from '../services/time-history.service';
 import {SettingsService} from '../services/settings.service';
 import { Observable} from 'rxjs';
@@ -10,7 +10,7 @@ import {Time} from '../models/time.model';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   public time: Time = new Time();
   public timer: any;
   public started: boolean = false;
@@ -21,18 +21,20 @@ export class HomePage {
   public settings: Observable<Settings>;
 
   constructor(private timeHistory: TimeHistoryService, private settingsService: SettingsService) {
-    timeHistory.getAverage();
-    timeHistory.average.subscribe((time) => {
+  }
+
+  ngOnInit() {
+    this.timeHistory.getAverage();
+    this.timeHistory.average.subscribe((time) => {
       this.average = time;
     });
-    timeHistory.allTimes.subscribe((times: Time[]) => {
+    this.timeHistory.allTimes.subscribe((times: Time[]) => {
       this.totalTimes = times ? times.length : 0;
     });
-    timeHistory.bestTime.subscribe((time: Time) => {
+    this.timeHistory.bestTime.subscribe((time: Time) => {
       this.bestTime = time;
     });
     this.settings = this.settingsService.getSettings();
-    console.log(this.settings);
   }
 
   screenTap() {

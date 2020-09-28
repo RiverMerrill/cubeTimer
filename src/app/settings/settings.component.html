@@ -1,6 +1,6 @@
+<ion-content>
 <ion-list>
   <ion-list-header>
-		<a [routerLink]="'/home'">< Back</a>
     <ion-label class="text-center">
 			Settings
     </ion-label>
@@ -10,7 +10,7 @@
       <ion-select (ionChange)="settings.theme = $event.detail.value; changeSetting()" [value]="settings.theme" okText="Okay" cancelText="Dismiss">
         <ion-select-option selected value="default">Default</ion-select-option>
         <ion-select-option value="blue-theme">Blue</ion-select-option>
-        <ion-select-option value="pink-theme">Pink</ion-select-option>
+        <ion-select-option value="trans-rights">Trans Rights</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
@@ -37,7 +37,13 @@
 		</ion-item>
 </ion-list>
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-  <ion-fab-button (click)="resetTimes()" color="danger">
-    <ion-icon name="remove"></ion-icon>
+  <ion-fab-button (click)="presentAlertConfirm()" color="danger">
+    <span>del</span>
   </ion-fab-button>
 </ion-fab>
+<ion-fab vertical="bottom" horizontal="start" slot="fixed">
+ <ion-fab-button (click)="goHome()" color="primary">
+   <ion-icon name="arrow-back-outline"></ion-icon>
+ </ion-fab-button>
+</ion-fab>
+</ion-content>
