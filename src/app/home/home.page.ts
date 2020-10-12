@@ -74,6 +74,15 @@ export class HomePage implements OnInit {
     this.time = new Time();
   }
 
+  deleteMostRecent(event: any): void {
+    this.preventDefault(event);
+    if (this.time.milliTotal !== 0) {
+      console.log(this.time);
+      this.timeHistory.clearMostRecent();
+      this.time = new Time();
+    }
+  }
+
   preventDefault(event: any) {
     event.preventDefault();
     event.stopPropagation();

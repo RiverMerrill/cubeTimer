@@ -67,6 +67,15 @@ export class TimeHistoryService {
     )
   }
 
+  public clearMostRecent(): void {
+    const history = this.storageService.getItem('time-history');
+    if (history.length) {
+      history.pop();
+      this.storageService.setItem('time-history', history);
+      this.getHistory();
+    }
+  }
+
   public clearAllTimes(): void {
     this.storageService.setItem('time-history', []);
     this.getHistory();

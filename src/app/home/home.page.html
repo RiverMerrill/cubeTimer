@@ -14,6 +14,7 @@
     <p *ngIf="(settings | async).showBest">Best: {{ bestTime.minutes | number: '2.' }}:{{ bestTime.seconds | number: '2.' }}:{{ bestTime.milliseconds | number: '2.' }}</p>
     <p *ngIf="(settings | async).average">Average Of {{ (settings | async).average }}: {{average.minutes | number: '2.'}}:{{average.seconds | number: '2.'}}:{{average.milliseconds | number: '2.'}}</p>
     <p *ngIf="(settings | async).showTotal">Total Times: {{ totalTimes }}</p>
+    <ion-button (click)="deleteMostRecent($event)" fill="outline" color="primary">Delete Last Time</ion-button>
   </div>
    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
      <ion-fab-button (click)="preventDefault($event)" [routerLink]="'/settings'" color="primary">
