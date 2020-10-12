@@ -73,4 +73,9 @@ export class HomePage implements OnInit {
   resetTimer() {
     this.time = new Time();
   }
+
+  preventDefault(event: any) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
 }
